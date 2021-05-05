@@ -19,7 +19,7 @@ app.use(cors())
 app.use(compression())
 app.use(json({ limit: '15MB' }))
 app.use('/api', routes())
-app.use('/files', express.static(Config.DIR_ARCHIVOS)) // CHANGE ROUTE FOR FILES
+app.use('/files', express.static(Config.DIR_FILES)) // CHANGE ROUTE FOR FILES
 app.use(express.static(path.join(__dirname, '../frontend')))
 app.get('/*', (_, res) => {
   res.sendFile(path.join(__dirname, '../frontend/index.html'), (err) => {

@@ -1,5 +1,5 @@
 import { Response, Request } from 'express'
-import Errores from '../errors/auth'
+import Errors from '../errors/auth'
 import { error } from '../helpers/errors'
 import { generateToken, compareHash, encryptHash } from '../helpers/auth'
 import User from '../model/User'
@@ -8,10 +8,10 @@ import Config from '../util/Config'
 const login = async (req: Request, res: Response) => {
   const { usuario, password } = req.body
   const user = await User.findOne({ usuario })
-  if (!user || !user.active) return error(res, Errores.IncorrectUser)
+  if (!user || !user.active) return error(res, Errors.IncorrectUser)
 
   const cmp = await compareHash(password, user.password)
-  if (!cmp) return error(res, Errores.IncorrectPassword)
+  if (!cmp) return error(res, Errors.IncorrectPassword)
 
   if (await compareHash(Config.PASS_DEF!!, user.password))
     return res.json({ user, reset: true })
@@ -24,13 +24,13 @@ const login = async (req: Request, res: Response) => {
 
 const changePassword = async (req: Request, res: Response) => {
   const { actual, password, password2, usuario } = req.body
-  if (password !== password2) return error(res, Errores.MismatchPassword)
+  if (password !== password2) return error(res, Errors.MismatchPassword)
   const user = await User.findOne({ usuario })
-  if (!user) return error(res, Errores.IncorrectUser)
+  if (!user) return error(res, Errors.IncorrectUser)
 
   if (user.password) {
     const cmp = await compareHash(actual, user.password)
-    if (!cmp) return error(res, Errores.MismatchPassword)
+    if (!cmp) return error(res, Errors.MismatchPassword)
   }
 
   user.password = await encryptHash(password)

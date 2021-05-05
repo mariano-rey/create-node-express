@@ -5,9 +5,16 @@ Create Node Express is a way to create NodeJS backend application with typescrip
 ### Installation
 
 ```sh
-$ npm install create-node-express-v2
+$ npm install -g create-node-express-v2
 OR
-$ yarn add create-node-express-v2
+$ yarn global add create-node-express-v2
+```
+
+### Use
+
+```sh
+$ cd 'path/to/create/backend'
+$ create-node-express
 ```
 
 ### Folders created:
