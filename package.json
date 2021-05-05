@@ -1,0 +1,27 @@
+{
+	"name": "create-node-express",
+	"version": "0.1.0",
+	"description": "A CLI to start with Node and Express backend",
+	"main": "bin/index.js",
+	"repository": "mariano_rey/create-node-express",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"cli",
+		"node",
+		"express"
+	],
+	"author": "Mariano Tomás Rey",
+	"license": "ISC",
+	"bin": {
+		"create-node-express": "bin/index.js"
+	},
+	"dependencies": {
+		"fs-extra": "^10.0.0",
+		"yargs": "^17.0.1"
+	},
+	"files": [
+		"dist"
+	]
+}
